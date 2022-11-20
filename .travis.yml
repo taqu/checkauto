@@ -1,0 +1,22 @@
+language: cpp
+sudo: false
+dist: focal
+compiler:
+  - gcc
+  - clang
+
+# matrix:
+#  include:
+#    - os: linux
+#      env: COMPILER_NAME=gcc CXX=g++ CC=gcc
+#    - os: linux
+#      env: COMPILER_NAME=clang CXX=clang++ CC=clang
+
+before_script:
+  - cd ${TRAVIS_BUILD_DIR}/
+  - mkdir build
+  - cd build
+  - cmake ..
+script:
+  - make
+  - ./check
